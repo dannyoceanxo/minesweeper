@@ -11,3 +11,11 @@ body {
   margin: 0;
   font: $base-text-size / 1 $base-font-family;
 }
+table {
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+}
+td {
+  border: 1px solid black;
+}
