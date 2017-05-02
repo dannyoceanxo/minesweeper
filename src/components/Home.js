@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
 class Home extends Component {
-  _click = (event) => {
-    window.fetch(`http://minesweeper-api.herokuapp.com/games`, {method: 'POST'})
+  create = (difficulty) => {
+    window.fetch(`http://minesweeper-api.herokuapp.com/games?difficulty=${difficulty}`, {method: 'POST'})
     .then(res => res.json())
     .then(data => {
       this.props.history.push(`/game/${data.id}`)
@@ -10,7 +10,11 @@ class Home extends Component {
   }
   render () {
     return <div>
-      <button onClick={this._click}>New Game?</button>
+      <div className='menu'>
+        <button onClick={() => this.create(0)}>Beginner</button>
+        <button onClick={() => this.create(1)}>Scaled</button>
+        <button onClick={() => this.create(2)}>RX</button>
+      </div>
     </div>
   }
 }

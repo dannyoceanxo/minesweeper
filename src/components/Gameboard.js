@@ -1,5 +1,21 @@
 import React, { Component } from 'react'
 
+const CLASSNAMES = {
+  ' ': 'unrevealed',
+  '_': 'empty',
+  'F': 'flagged',
+  '*': 'bomb',
+  '@': 'flagged-bomb',
+  '1': 'numbered-1',
+  '2': 'numbered-2',
+  '3': 'numbered-3',
+  '4': 'numbered-4',
+  '5': 'numbered-5',
+  '6': 'numbered-6',
+  '7': 'numbered-7',
+  '8': 'numbered-8'
+}
+
 class GameBoard extends Component {
   state = {
     gameboard: []
@@ -62,7 +78,9 @@ class GameBoard extends Component {
                   this._rightClick(x, y)
                 }} onClick={() => {
                   this._click(x, y)
-                }}>{col}</td>
+                }}
+                  className={CLASSNAMES[col]}
+                >{col}</td>
               })}
             </tr>
           })}
@@ -71,10 +89,11 @@ class GameBoard extends Component {
     } else {
       if (this.state.state === 'won') {
         return <h1>You're winner!</h1>
-      } else {
+      } else if (this.state.state === 'lost') {
         return <h1>You suck!</h1>
       }
     }
+    return null
   }
 }
 
